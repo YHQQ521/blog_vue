@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>注册</title>  
+<link rel="stylesheet" href="../stylesheets/backstage/pintuer.css">
+<link rel="stylesheet" href="../stylesheets/backstage/admin.css">
+<link rel="stylesheet" href="../stylesheets/backstage/htMain.css">
+    <script src="../../javascripts/backstage/jquery.min.js"></script>
+    <script src="../../javascripts/backstage/pintuer.js"></script>  
+    <script src="../../javascripts/backstage/main.js"></script>  
+    <script src="../../javascripts/backstage/register.js"></script>  
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div class="h150"></div>
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top">
+                    <h1>后台管理中心</h1>
+                </div>
+                <div class="panel-body registerPanel">
+                    <div class="form-group">
+                        <div id="email" class="field field-icon-right">
+                            <input id="user0" type="text" class="input input-big" name="name" placeholder="请输入邮箱" data-validate="required:请输入邮箱" />
+                            <span class="icon icon-user margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input id="password0" type="password" class="input input-big" name="password" placeholder="请设置登录密码" data-validate="required:请设置登录密码" />
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div id="checkEmail" class="field field-icon-right">
+                            <input id="password1" type="password" class="input input-big" name="password" placeholder="请再次输入登录密码" data-validate="required:请再次输入登录密码" />
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="register" class="pd30"><input  onclick="check()" type="submit" class="button button-block bg-main text-big input-big" value="注册"></div>
+            </div>       
+        </div>
+    </div>
+</div>
+<!--提示框遮罩层-->
+<div class="tipWraper" hidden>
+    <div class="tips">
+        <p class="text"></p>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>

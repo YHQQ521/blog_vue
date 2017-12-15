@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="../stylesheets/backstage/pintuer.css">
+<link rel="stylesheet" href="../stylesheets/backstage/admin.css">
+<link rel="stylesheet" href="../stylesheets/backstage/htMain.css">
+<script src="../../javascripts/backstage/jquery.min.js"></script>
+<script src="../../javascripts/backstage/pintuer.js"></script>
+<script src="../../javascripts/backstage/amazonmenu.js"></script>
+<script src="../../javascripts/backstage/ajaxfileupload.js"></script>
+<script src="../../javascripts/backstage/main.js"></script>
+<script src="../../javascripts/backstage/addWorks.js"></script>
+</head>
+<body>
+<div class="panel admin-panel margin-top" id="add">
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 增加内容</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="/admin/works_upload" onsubmit="return checkSubmit();"  enctype="multipart/form-data" > 
+      <div class="form-group">
+        <div class="label">
+          <label>作品名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" value="" name="worksName" data-validate="required:请输入作品名称" />
+          <div class="tips"></div>
+        </div>
+      </div>   
+      <div class="form-group">
+        <div class="label">
+          <label>文件路径：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" value="" name="fileHref" data-validate="required:请输入作品链接地址" />
+          <div class="tips"></div>
+        </div>
+      </div>   
+      <div class="form-group">
+        <div class="label">
+          <label>轮播图：</label>
+        </div>
+        <div class="field">
+          <div id="addSwipeImgWrap" class="addImgWrap">
+            轮播图
+          </div>
+          <input id="triggerSwipe" type="button" class="button bg-blue margin-left" value="+ 添加图片">
+          <input type="file" id="addSwipeFile" name="imgUpload" class="input tips" onchange ="uploadSwipeImg(this,1)" data-toggle="hover" data-place="right"/>
+          <input id="addSwipeImgHidden" type="hidden" name="swipeImg" value="">
+          <span>最佳图片尺寸：500*250</span>
+          <div class="tips"></div>
+        </div>
+      </div> 
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+<script>
+  //接收登录的session信息
+    var userInfo='<%=userInfo%>'; 
+    if(userInfo){
+
+    }else{
+      window.top.location.href='/admin';
+    }
+</script>

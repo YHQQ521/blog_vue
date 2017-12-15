@@ -1,0 +1,468 @@
+//-------------------公用样式--------------------//
+/*define common class*/
+.borderNo{border:none !important;}
+.pb5{padding-bottom:5rem;}
+.mb5{margin-bottom:5rem;}
+.mt5{margin-top: 5rem !important;}
+.mt6{margin-top: 6rem !important;}
+.mt7{margin-top: 7rem !important;}
+.mt4{margin-top: 4rem !important;}
+.mt1{margin-top: 1rem !important;}
+.mt0{margin-top: 0 !important;}
+.display_none{display: none;}
+.none{display: none;}
+.block{display: block;}
+.bt{.borderBottom(1px,solid,#dbdbdb);}
+.pt6{.padding4(4.8rem,0,6rem,0)}
+.clearfix{float:none;}
+.Z5tl{.textAlign(left)}
+.ddzf{.fontColor(#FF5B28)}
+.bg_sl{.bg(@sl)}
+.fontColor_bs{.fontColor(#fff) !important}
+.fontColor_hs{.fontColor(#000) !important}
+.minHeight2{
+	overflow: hidden !important;
+	height: auto !important;
+	min-height: 2rem !important;
+	.textAlign(left) !important;
+	padding-bottom:5px;
+}
+//1、定义颜色
+@hl:#aacc03;//黄绿
+@ql:#aacc03;//浅绿
+@sl:#76a22d;//深绿
+@qh:#888;//浅灰
+@bs:#fff;//白色
+@ql:#5677fc;//浅蓝
+.fontColor(@color:@hl){
+	color: @color;
+}
+.qh{.fontColor(@qh)}
+.hs{.fontColor(#E51C23)}
+.ls{.fontColor(#30D380)}
+.JWColor0{.fontColor(#E51C23)}
+.JWColor1{.fontColor(#FF9904)}
+.JWColor2{.fontColor(#259B24)}
+.JWColor3{.fontColor(#FF5722)}
+.JWColor4{.fontColor(#888)}
+.JWColor5{.fontColor(#fff)}
+.bg(@color:@hl){
+	background:@color; 
+}
+//字体大小
+@lg:24px;
+@big:18px;
+@normal:16px;
+@small:14px;
+.fontSize(@size:16px){
+	font-size:@size; 
+}
+//字体粗细
+.fontWeight(@bold:bold){
+	font-weight: @bold;
+}
+.bold{.fontWeight() !important}
+//文字对齐方式
+.textAlign(@center:center){
+	text-align: @center;
+}
+//定义边框
+.border(@px,@solid,@color){
+	border: @px @solid @color;
+}
+.borderTop(@px,@solid,@color){
+	border: @px @solid @color;
+}
+.borderBottom(@px,@solid,@color){
+	border-bottom: @px @solid @color;
+}
+//定义浮动
+.float(@left:left){
+	float: @left;
+}
+.fl{.float()}
+.fr{.float(right)}
+//外边距
+.margin1(@all){
+	margin:@all;
+}
+.margin2(@vertical,@horizontal){
+	margin:@vertical @horizontal;
+}
+.margin4(@top,@right,@bottom,@left){
+	margin:@top @right @bottom @left;
+}
+//内边距
+.padding1(@all){
+	padding:@all;
+}
+.padding2(@vertical,@horizontal){
+	padding:@vertical @horizontal;
+}
+.padding4(@top,@right,@bottom,@left){
+	padding:@top @right @bottom @left;
+}
+//定义元素块行级
+.display(@inline-block:inline-block){
+	display: @inline-block;
+}
+//-------------------公用样式 结束-----------------//
+
+/*B1*/
+.B1_num{
+	line-height: 4rem !important;
+	color: #76a22d !important;
+    margin-left: 1rem;
+    font-size: 16px !important;
+}
+.cz:before {
+      content: "充足";
+      .bg(@hl);
+      color: #CF4030;
+      border-radius:5px;
+      width: 65px;
+      .textAlign();
+      .fontColor(@bs);
+      display: block;
+}
+.jz:before {
+      content: "紧张";
+      .bg(red);
+      color: #CF4030;
+      border-radius:5px;
+      width: 65px;
+      .textAlign();
+      .fontColor(@bs);
+      display: block;
+}
+.B1_ys{
+	float: right;
+	margin-right: 5px;
+	line-height: 4rem;
+	.fontSize(14px);
+	.fontColor(#a8a8a8);
+}
+.B1Course{
+	position: fixed;
+	top: 4.8rem;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	.bg(#f0f0f0);
+	.padding2(10px,0);
+	z-index: 1000000;
+	li{
+		.float();
+		width: 31%;
+		.margin2(0,1%);
+		select{
+			width: 100%;
+			.padding2(2px,8px);
+			border-radius:5px;
+			.fontColor(#999);
+			.fontSize(14px);
+		}
+	}
+}
+/*B2*/
+.B2_borderNo{border-bottom:none;}
+.B2_price{
+	.fontColor(@sl);
+	.fontWeight();
+}
+@media screen and (width:375px){
+	.C1_TextInfo{padding:5px 10px;}
+}
+	.fileTitle{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px 5px;
+		text-align: center;
+		background-color: #fff;
+		border-bottom: 1px dashed #dbdbdb;
+	}
+	.fileTitle .fileInfo{
+		font-size: 12px;
+		margin-top: 5px;
+		color:#888;	
+	}
+	.fileTitle .fileInfo .time{
+		margin-left: 10px;
+	}
+	.content{
+		background: #fff;
+		box-sizing: border-box;
+		padding: 10px 10px;
+		text-align: justify;
+		font-size: 18px;
+		text-indent: 3rem;
+	}
+/*B2_1*/
+.B21Wrap{
+	.margin2(10px,0);
+	.bg(#fff);
+	h1{
+		.margin4(0,10px,10px,10px);
+		.padding2(18px,10px);
+		.borderBottom(1px,solid,#999);
+	}
+	.ggTitle{
+		.margin2(0,10px);
+		.padding2(5px,0);
+		h3{
+			.fontSize(12px);
+			.fontColor(#999);
+			.fontWeight(normal);
+		}
+		p{
+			span{
+				display: inline-block;
+				.margin2(10px,2.5%);
+				.padding2(3px,10px);
+				.fontSize(14px);
+				.border(1px,solid,#dbdbdb);
+				// &:nth-of-type(1){
+				// .margin4(10px,10px,10px,0);					
+				// }
+			}
+			.xqFirst{
+				.bg(#9CCC65);
+				.fontColor(#fff);
+			}
+			.rqSecond{.fontColor(#999)}
+		}
+	}
+}
+.B21Price{
+	.bg(#fff);
+	.padding1(10px);
+	span{
+		&:nth-of-type(1){.fontSize(14px)}
+		&:nth-of-type(2){
+			.float(right);
+			.fontSize(14px);
+			.fontWeight();
+			.fontColor(#9CCC65);
+		}
+	}
+}
+.B21confine{
+	.bg(#9CCC65)!important;
+	.fontColor(#fff);
+	.padding2(.5rem,10px);
+}
+/*B3*/
+.select_SA7{
+	padding: 0 10px;
+	z-index:10000;
+}
+.xjry{
+	.padding2(2px,5px);
+	.bg(#9CCC65);
+	.float(right);
+	.fontColor(#fff);
+	border-radius:5px;
+}
+.B3Border{
+	overflow: hidden;
+}
+.msgBoard{
+	.display(block);
+	margin: 10px auto;
+	padding:5px 10px;
+	box-sizing: border-box;
+	border: 1px solid #dbdbdb;
+}
+textarea::-webkit-input-placeholder{font-size: 14px}
+/*B3_1*/
+.B31Child{
+	.padding2(15px,10px);
+	.fontSize(16px);
+	.fontWeight(normal);
+	.fontColor(#999);
+}
+/*E2*/
+.E2Color1{.fontColor(#76a22d) !important}
+.E2Color2{.fontColor()}
+.E2_top2{margin-top:2rem;}
+.E2_ml3{
+	float: right;
+}
+.E2_ml3 img{
+	vertical-align: middle;
+	margin-left: 2rem;
+}
+// .oneCharacter{
+// 	.fontColor(#a8a8a8);
+// 	.fontSize(14px);
+// 	margin-left: 5px;
+// }
+.fileBrief{
+	width: 71%;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+	font-size: 14px;
+}
+/*E3*/
+.E3_relative{position: relative;}
+.E3_textInfo{
+	position: absolute;
+	top:1rem;
+	right: 1rem;
+}
+.E3_textInfo h3{
+	.fontWeight(normal);
+	.fontSize(16px);
+	.margin2(5px,0);
+}
+.E2Logo{
+	width: 3rem;
+	height: auto;
+	vertical-align: middle;
+}
+/*D1*/
+.D1_topInfo{
+	.padding2(10px,0);
+	.margin4(0,0,10px,0);
+	.bg(@bs);
+}
+.D1_topInfo img{
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	vertical-align: middle;
+	.margin2(0,10px);
+}
+.D1_listInfo{
+	.padding2(10px,0);
+	.bg(@bs);
+	.padding2(15px,10px);
+	.borderBottom(1px,solid,#DBDBDB);
+}
+.D1_listInfo img{
+	.float(right);
+	width: 1rem;
+	height: auto;
+}
+.D1Wrap{.float(right);}
+.D1ChildNum{
+	margin-right: 10px;
+	.fontSize(14px);
+}
+/*B5*/
+.B5_wrap{
+	.margin2(4rem,10px);
+	.bg(@bs);
+	.padding4(20px,10px,30px,10px);
+	.textAlign();
+}
+.B5_wrap img{
+	width: 5rem;
+	height: auto;
+	vertical-align: middle;
+}
+.B5_wrap p{margin-top:-1rem;}
+.B5_bg{.bg(@hl)!important}
+/*B4*/
+.B4_color{.fontColor(@sl)}
+.B4_imgSize{
+	width: 2rem !important;
+	height: auto;
+}
+.B4_padding{
+	.padding2(.5rem,0)!important;
+}
+/*B3*/
+.B3_wrap{
+	.margin2(10px,0);
+	border:none;
+}
+.B3_wrap dl{
+	padding: 15px 0;
+	height: 2rem;
+	line-height: 2rem;
+}
+.B3_container{
+    zoom: 1;
+    float: right;
+    width: 12rem;
+    border-radius: 5px;
+    text-align: right;
+}
+.B3_Minus{
+	background: url("../images/icon/Minus01.svg") no-repeat center center;}
+.B3_plus{
+	background: url("../images/icon/plus01.svg") no-repeat center center;}
+.B3_Minus,.B3_plus{
+    background-size: 1.5rem auto;
+    background-color: transparent;
+    border: none;
+    width: 25% !important;
+}
+.B3_num{
+	.padding2(5px,15px);
+	margin-left: 0 !important;
+}
+.B3_phoneNum input{
+	width: 15rem;
+	border-radius: 5px;
+	vertical-align: middle;
+	.border(1px,solid,@qh);
+}
+.worksWrap{
+	display: flex;
+	align-content: space-around;
+	padding: 0 10px;
+}
+dl{
+	flex-basis: 40%;
+	margin: 10px 0;
+}
+dl dt{
+	
+}
+dl dt img{
+	width: 100%;
+	height: 100%;
+}
+dl dd .tit{
+	text-align: center;
+}
+	.portrait{
+		position: relative;
+		width: 100%;
+		height: 210px;
+		box-sizing: border-box;
+		background-color: #E9877C;
+	}
+	.portrait img{
+		width: 37%;
+		border-radius: 50%;
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	.portrait .name{
+		color: #fff;
+		position: absolute;
+		bottom: 8%;
+		left: 50%;
+		transform: translate(-50%,-50%);		
+	}
+	.portrait .occupation{
+		width: 100%;
+		color: #fff;
+		position: absolute;
+		bottom: 5px;
+		text-align: center;		
+	}
+	.intro{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 20px 10px;
+		background-color: #fff;
+	}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>时钟</title>
+	<style type="text/css">
+	*{margin:0;padding: 0;}
+	body{background:#000;}
+	canvas{margin:0 auto;display: block;}
+	
+	</style>
+</head>
+<body>
+	<canvas id="mycanvas" width="600" height="600"></canvas>
+	<script>
+		var C=document.getElementById('mycanvas');
+		var ctx=C.getContext('2d');
+
+		//画表
+		function myClock(){
+			
+			//开始清除画布的所有内容
+			ctx.clearRect(0,0,C.width,C.height);
+
+			//获取事件对象
+			var myDate=new Date();
+			//获取秒
+			var s=myDate.getSeconds();
+			//获取分钟
+			var ii=myDate.getMinutes()+s/60;
+			//获取小时
+			var h24=myDate.getHours()+ii/60+s/3600;
+			var h=h24>12?h24-12:h24;
+
+			//1、绘制分刻度
+			ctx.save();
+			ctx.lineWidth=5;
+			ctx.strokeStyle='pink';
+			//把坐标系平移到表盘的圆心位置
+			ctx.translate(300,300);
+			
+			//循环时刻表
+			for(var i=0;i<60;i++){
+			//旋转刻度
+			ctx.rotate(Math.PI/180*6);
+			ctx.beginPath();
+			ctx.moveTo(0,-230);
+			ctx.lineTo(0,-250);
+			ctx.stroke();
+			}
+			ctx.restore();
+
+			//2、绘制时刻度
+			ctx.save();
+			ctx.lineWidth=15;
+			ctx.strokeStyle='green';
+			//把坐标系平移到表盘的圆心位置
+			ctx.translate(300,300);
+			
+			//循环时刻表
+			for(var i=0;i<12;i++){
+			//旋转刻度
+			ctx.rotate(Math.PI/180*(360/12));
+			ctx.beginPath();
+			ctx.moveTo(0,-210);
+			ctx.lineTo(0,-250);
+			ctx.stroke();
+			}
+			ctx.restore();
+
+			//3、绘制表盘
+			ctx.save();
+			ctx.lineWidth=10;
+			//在表盘上绘制文字
+			ctx.fillStyle="blue";
+			ctx.font="bold 50px 宋体";
+			ctx.textAlign="center";
+			ctx.fillText('钟表',300,400);
+			ctx.strokeStyle='yellow';
+			ctx.beginPath();
+			ctx.arc(300,300,250,0,Math.PI/180*360);
+			ctx.stroke();
+			ctx.restore();
+			
+			//4、绘制时针
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.rotate(Math.PI/180*(h/12)*360);
+			ctx.strokeStyle="green";
+			ctx.lineWidth=15;
+			ctx.beginPath();
+			ctx.moveTo(0,30);
+			ctx.lineTo(0,-150);
+			ctx.stroke();
+			ctx.restore();
+
+			//5、绘制分针
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.rotate(Math.PI/180*(ii/60)*360);
+			ctx.strokeStyle="pink";
+			ctx.lineWidth=10;
+			ctx.beginPath();
+			ctx.moveTo(0,30);
+			ctx.lineTo(0,-180);
+			ctx.stroke();
+			ctx.restore();
+
+			//6、绘制秒针
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.rotate(Math.PI/180*(s/60)*360);
+			ctx.strokeStyle="red";
+			ctx.lineWidth=5;
+			ctx.beginPath();
+			ctx.moveTo(0,30);
+			ctx.lineTo(0,-200);
+			ctx.stroke();
+			ctx.restore();
+
+			//7、绘制圆心
+			ctx.save();
+			ctx.strokeStyle="#09c";
+			ctx.lineWidth=10;
+			ctx.fillStyle="#000";
+			ctx.beginPath();
+			ctx.arc(300,300,10,0,Math.PI/180*360,false);
+			ctx.fill();
+			ctx.stroke();
+			ctx.restore();
+		}
+		myClock();
+		setInterval(myClock,1000)
+	</script>
+</body>
+</html>

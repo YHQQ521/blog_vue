@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="../stylesheets/backstage/pintuer.css">
+<link rel="stylesheet" href="../stylesheets/backstage/admin.css">
+<link rel="stylesheet" href="../stylesheets/backstage/htMain.css">
+<script src="../../javascripts/backstage/jquery.min.js"></script>
+<script src="../../javascripts/backstage/pintuer.js"></script>
+<script src="../../javascripts/backstage/infoList.js"></script>
+</head>
+<body>
+<form method="post" action="" id="listform">
+  <div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a class="addField" href="">添加字段</a></div>
+    <div class="padding border-bottom">  
+    <button type="button" class="button border-yellow" onclick="window.location.href='/admin/addInfo'"><span class="icon-plus-square-o"></span> 添加内容</button>
+    </div>
+    <table id="htAdContent" class="table table-hover text-center">
+      <tr>
+        <th class="pl20" width="15%">序号</th>
+        <th>缩略图</th>
+        <th>文章标题</th>
+        <th width="10%">创建时间</th>
+        <th width="310">操作</th>
+      </tr>
+    </table>
+  </div>
+</form>
+<script type="text/javascript">
+  //接收登录的session信息
+    var userInfo='<%=userInfo%>'; 
+    if(userInfo){
+
+    }else{
+      window.top.location.href='/admin';
+    }
+</script>
+</body>
+</html>

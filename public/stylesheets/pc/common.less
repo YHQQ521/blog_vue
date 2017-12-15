@@ -1,0 +1,293 @@
+//-------------------公用样式-----------------------
+//0、宽度和高度
+.w(@px){width: @px}
+.h(@px){height: @px}
+//1、字体颜色
+.fc(@color){
+  color: @color;
+}
+.fcRed{.fc(red)!important};
+.fcGreen{.fc(green)!important};
+.fcBlue{.fc(blue)!important};
+.fcWhite{.fc(#fff)!important};
+.fcBlack{.fc(#000)!important};
+.fcYellow{.fc(yellow)!important};
+//2、背景颜色
+.bg(@color){
+  background:@color; 
+}
+.bgRed{.bg(red)!important};
+.bgGreen{.bg(green)!important};
+.bgBlue{.bg(blue)!important};
+.bgWhite{.bg(#fff)!important};
+.bgBlack{.bg(#000)!important};
+.bgYellow{.bg(yellow)!important};
+.bgPink{.bg(pink)!important};
+//3、字体大小
+.fs(@size){
+  font-size:@size; 
+}
+.fs14{.fs(14px)!important}
+.fs16{.fs(16px)!important}
+.fs18{.fs(18px)!important}
+.fs20{.fs(20px)!important}
+.fs22{.fs(22px)!important}
+.fs24{.fs(24px)!important}
+//4、字体粗细
+.fw(@bold:bold){
+  font-weight: @bold;
+}
+.bold{.fw()!important}
+.normal{.fw(normal)!important}
+.lighter{.fw(lighter)!important}
+//5、水平对齐方式
+.ta(@center:center){
+  text-align: @center;
+}
+.taL{.ta(left)!important}
+.taC{.ta()!important}
+.taR{.ta(right)!important}
+//6、垂直对齐方式
+.va(@middle:middle){
+  vertical-align: @middle;
+}
+.vaT{.va(top)!important}
+.vaM{.va(middle)!important}
+.vaB{.va(bottom)!important}
+//7、定义边框
+.bor(@px:1px,@solid:solid,@color:#dbdbdb){
+  border: @px @solid @color;
+}
+.borT(@px:1px,@solid:solid,@color:#dbdbdb){
+  border-top: @px @solid @color;
+}
+.borB(@px:1px,@solid:solid,@color:#dbdbdb){
+  border-bottom: @px @solid @color;
+}
+.borR(@px:1px,@solid:solid,@color:#dbdbdb){
+  border-right: @px @solid @color;
+}
+.borL(@px:1px,@solid:solid,@color:#dbdbdb){
+  border-left: @px @solid @color;
+}
+//8、定义浮动
+.fl(@left:left){
+  float: @left;
+}
+.flL{.fl()!important}
+.flR{.fl(right)!important}
+//9、外边距
+.mg1(@all){
+  margin:@all;
+}
+.mg2(@vertical,@horizontal){
+  margin:@vertical @horizontal;
+}
+.mg4(@top,@right,@bottom,@left){
+  margin:@top @right @bottom @left;
+}
+.mt(@top){
+  margin-top:@top;
+}
+.ml(@left){
+  margin-left:@left;
+}
+.mr(@right){
+  margin-right:@right;
+}
+.mb(@bottom){
+  margin-bottom:@bottom;
+}
+  //上外边距
+  .mt5{.mt(5px)!important}
+  .mt10{.mt(10px)!important}
+  .mt15{.mt(15px)!important}
+  .mt20{.mt(20px)!important}
+  .mt25{.mt(25px)!important}
+  .mt30{.mt(30px)!important}
+  //下外边距
+  .mb5{.mb(5px)!important}
+  .mb10{.mb(10px)!important}
+  .mb15{.mb(15px)!important}
+  .mb20{.mb(20px)!important}
+  .mb25{.mb(25px)!important}
+  .mb30{.mb(30px)!important}
+  //左外边距
+  .ml5{.ml(5px)!important}
+  .ml10{.ml(10px)!important}
+  .ml15{.ml(15px)!important}
+  .ml20{.ml(20px)!important}
+  .ml25{.ml(25px)!important}
+  .ml30{.ml(30px)!important}
+  //左外边距
+  .mr5{.mr(5px)!important}
+  .mr10{.mr(10px)!important}
+  .mr15{.mr(15px)!important}
+  .mr20{.mr(20px)!important}
+  .mr25{.mr(25px)!important}
+  .mr30{.mr(30px)!important}
+//10、内边距
+.pd1(@all){
+  padding:@all;
+}
+.pd2(@vertical,@horizontal){
+  padding:@vertical @horizontal;
+}
+.pd4(@top,@right,@bottom,@left){
+  padding:@top @right @bottom @left;
+}
+.pt(@top){
+  padding-top:@top;
+}
+.pl(@left){
+  padding-left:@left;
+}
+.pr(@right){
+  padding-right:@right;
+}
+.pb(@bottom){
+  padding-bottom:@bottom;
+}
+
+  //上内边距
+  .pt5{.pt(5px)!important}
+  .pt10{.pt(10px)!important}
+  .pt15{.pt(15px)!important}
+  .pt20{.pt(20px)!important}
+  .pt25{.pt(25px)!important}
+  .pt30{.pt(30px)!important}
+  //下内边距
+  .pb5{.pb(5px)!important}
+  .pb10{.pb(10px)!important}
+  .pb15{.pb(15px)!important}
+  .pb20{.pb(20px)!important}
+  .pb25{.pb(25px)!important}
+  .pb30{.pb(30px)!important}
+  //左内边距
+  .pl5{.pl(5px)!important}
+  .pl10{.pl(10px)!important}
+  .pl15{.pl(15px)!important}
+  .pl20{.pl(20px)!important}
+  .pl25{.pl(25px)!important}
+  .pl30{.pl(30px)!important}
+  //右内边距
+  .pr5{.pr(5px)!important}
+  .pr10{.pr(10px)!important}
+  .pr15{.pr(15px)!important}
+  .pr20{.pr(20px)!important}
+  .pr25{.pr(25px)!important}
+  .pr30{.pr(30px)!important}
+//11、定义元素行块级
+.display(@inline-block:inline-block){
+  display: @inline-block;
+}
+.block{.display(block)}
+.inlineBlock{.display()}
+//12、定义倒角
+.borRadius(@px){
+  -webkit-border-radius:@px;	
+  -moz-border-radius:@px;	
+  border-radius:@px;
+}
+//13、定义定位
+.pos(f){
+	position: fixed;
+}
+.pos(r){
+	position: relative;
+}
+.pos(a){
+	position: absolute;
+}
+//14、清除浮动
+.clearFix{
+	zoom:1
+	&:after{
+		content: "";
+		display: block;
+		clear: both;		
+	}
+}
+//15、盒子类型
+.boxS(@type:border-box){box-sizing: @type;}
+
+//-------------------稍微高级一点的公用样式-----------------------
+//定义三角
+.triangle(top,@w:5px,@c:#ccc){
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+	border-style: :dashed dashed solid dashed;
+}
+.triangle(right,@w:5px,@c:#ccc){
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+	border-style: :dashed dashed dashed solid;
+}
+.triangle(bottom,@w:5px,@c:#ccc){
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+}
+.triangle(left,@w:5px,@c:#ccc){
+	border-width: @w;
+	border-color:transparent @c transparent transparent;
+	border-style: dashed solid dashed dashed;
+}
+.triangle(@_,@w:5px,@c:#ccc){
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+//----------------重置页面样式--------------------
+html,body{
+  height: auto;
+  overflow: auto;
+}
+a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
+  font-family: "微软雅黑",Helvetica, Arial, sans-serif;  
+  border: none;
+  outline: 0;
+  .mg1(0);
+  .pd1(0);
+  .va(baseline); 
+}
+article, aside, dialog, figure, footer, header, nav, section {
+  .display(block);
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  .fw();
+}
+h1, h2, h3, h4, h5, h6 {
+  .fs(100%);
+  .fw();
+}
+fieldset, img {border: none;}
+li {list-style: none;}
+/* tables still need cellspacing="0" in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; 
+}
+table, th, td {.va()}
+button, input[type="text"], input[type="button"], textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  .va();
+  outline: 0px;
+  -webkit-appearance: none; 
+}
+ol, ul {list-style: none;}
+blockquote, q {
+  quotes: none; 
+}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; 
+}
+a, button {
+  text-decoration: none;
+  cursor: pointer; 
+}
