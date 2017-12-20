@@ -3,7 +3,7 @@ $(function(){
       $.ajax({
         type:'GET',
         dataType:'json',
-        data:{data:adId},
+        data:{data:worksId},
         url:'/admin/htgetWorks2',
         success:function(response,status,xhr){
           console.log(response);

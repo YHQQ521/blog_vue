@@ -1,5 +1,8 @@
 //获取文章内容
   $(function(){
+    $('#tabChange li').on('click',function(){
+      $(this).addClass('tabActive').siblings().removeClass('tabActive')
+    })
       //获取文章内容
       $.ajax({
         type:'GET',
@@ -7,9 +10,9 @@
         data:{logUser:userInfo},
         url:'/admin/htgetArticle',
         success:function(response,status,xhr){
-          console.log(response)
+          // console.log(response)
           for(var i=0;i<response.length;i++){
-            var htArticleList='<tr id="'+response[i].article_id+'">'+
+            var htArticleList='<tr>'+
                               '<td style="padding-left:20px;">'+
                                      (i+1)+
                                '</td>'+

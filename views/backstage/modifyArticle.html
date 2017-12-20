@@ -22,14 +22,22 @@
 <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
 <script src="../ueditor/lang/zh-cn/zh-cn.js"></script>
 <script>
-    var adId='<%=data%>';
+    var ArticleId='<%=data%>';
 </script>
 </head>
 <body>
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加内容</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="/admin/modifyTechnicalFile" enctype="multipart/form-data" onsubmit="return checkaddContent();">  
+    <form method="post" class="form-x" action="/admin/modifyArticle" enctype="multipart/form-data" onsubmit="return checkaddContent();"> 
+      <div class="form-group">
+        <div class="label">
+          <label>选择文章分类：</label>
+        </div>
+        <input id="articleTypeHidden" type="hidden" value="" name="articleType">
+        <div id="getArticleType" class="field" style="margin-top: 8px;">
+        </div>
+      </div>  
       <div class="form-group">
         <!--id放入隐藏域中-->
         <input id="IDName" type="hidden" name="ID">
@@ -41,7 +49,7 @@
           <div class="tips"></div>
         </div>
       </div>      
-      <div class="form-group">
+      <div class="form-group hideTechClass">
         <div class="label">
           <label>选择文章分类：</label>
         </div>

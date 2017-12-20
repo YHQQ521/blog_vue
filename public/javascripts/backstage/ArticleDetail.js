@@ -6,9 +6,9 @@ $(function(){
         data:{data:ArticleId},
         url:'/admin/htgetArticle2',
         success:function(response,status,xhr){
-          console.log(response);
+          // console.log(response);
           $('#imgSamllSrc').append('<img src="../'+response[0].cover_image_path+'" alt="">');
-          $('#selectedArticleType').text(response[0].class_name);
+          $('#selectedArticleType').text(response[0].article_type_title);
           $('#adTitle').text(response[0].article_title);
           $('#summary').text(response[0].article_brief);
           $('#selectedName').text(response[0].class_name);

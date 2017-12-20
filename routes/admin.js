@@ -59,19 +59,34 @@ router.post('/imgUploadSaveSrc', function(req,res){
   });
 });
 
-/*************************一、插入数据********************************/
+/***********************************************前台****************************************/
 
-//1、技术文档
-router.post('/technicalFile_upload', function(req,res){
+/*************************一、获取数据（pc端）********************/
+
+/*************************一、获取数据（移动端端）****************/
+//1、文章列表
+router.get('/getArticleList',function(req,res){
+  mysql.selectArticleList(req,res);
+})
+//2、文章详情
+router.get('/getArticleDetail',function(req,res){
+  mysql.selectArticleDetail(req,res);
+})
+
+
+
+/***********************************************后台****************************************/
+
+/************************一、插入数据****************************/
+//1、文章
+router.post('/article_upload', function(req,res){
   var articleType='';
-  var logUser='';
   var title='';
-  var price='';
+  var logUser='';
   var classCode='';
-  var description = '';
-  var isDeleted=0;
-  var status=0;
-  var detailImgs = '';
+  var summary = '';
+  var editorValue = '';
+  var smallImg = '';
   var form = new formidable.IncomingForm();   //创建上传表单
   
   form.parse(req, function(err, fields, files) {
@@ -97,35 +112,34 @@ router.post('/technicalFile_upload', function(req,res){
     });             
   });
 });
-//2、前端资讯
-router.post('/info_upload', function(req,res){
-  var time=new Date();
+//2、菜单
+router.post('/menu_upload', function(req,res){
+  var menuParentId='';
+  var menuLevel='';
+  var menuTitleEN='';
+  var menuTitleZH='';
+  var coverPhotoPath='';
   var logUser='';
-  var title='';
-  var price='';
-  var description = '';
-  var isDeleted=0;
-  var status=0;
-  var detailImgs = '';
+
   var form = new formidable.IncomingForm();   //创建上传表单
   
   form.parse(req, function(err, fields, files) {
     if (err) {
         console.log(err);
     } else{
-      title=fields.title;
+      menuParentId=fields.parentLevel;
+      menuLevel=fields.menuLevel;
+      menuTitleEN=fields.menuTitleEN;
+      menuTitleZH=fields.menuTitleZH;
+      coverPhotoPath = fields.menuIcon;
       logUser=fields.logUser;
-      summary=fields.summary;
-      editorValue=fields.editorValue;
-      smallImg = fields.smallImg;
     }
-    var adInfo = [title,smallImg,editorValue,logUser,time,summary,status,isDeleted];
-
-    mysql.addInfo(adInfo,function(err, info) {
+    var menuData = [menuParentId,menuLevel,menuTitleEN,menuTitleZH,coverPhotoPath,logUser];
+    mysql.addMenu(menuData,function(err, info) {
         if(err) {
           console.log(err);
         }else {
-          res.redirect('/admin/infoList');
+          res.redirect('/admin/menuList');
         }
     });             
   });
@@ -155,133 +169,40 @@ router.post('/works_upload', function(req,res){
     });
   });
 });
-//4、生活感悟
-router.post('/life_upload', function(req,res){
-  var time=new Date();
-  var logUser='';
-  var title='';
-  var price='';
-  var description = '';
-  var isDeleted=0;
-  var status=0;
-  var detailImgs = '';
-  var form = new formidable.IncomingForm();   //创建上传表单
-  
-  form.parse(req, function(err, fields, files) {
-    if (err) {
-        console.log(err);
-    } else{
-      title=fields.title;
-      logUser=fields.logUser;
-      summary=fields.summary;
-      editorValue=fields.editorValue;
-      smallImg = fields.smallImg;
-    }
-    var adInfo = [title,smallImg,editorValue,logUser,time,summary,status,isDeleted];
 
-    mysql.addLife(adInfo,function(err, info) {
-        if(err) {
-          console.log(err);
-        }else {
-          res.redirect('/admin/lifeList');
-        }
-    });             
-  });
-});
+/************************二、获取数据****************************/
 
-/*************************二、获取数据********************************/
-
-//前端
-/**************首页获取数据******************/
-
-//1、首页从数据库中获取技术文档
-router.get('/homeTechnicalFile',function(req,res){
-  mysql.homeSelectTechnicalFile(req,res);
-})
-//2、首页从数据库中获取前端资讯
-router.get('/homeInfo',function(req,res){
-  mysql.homeSelectInfo(req,res);
-})
-//3、首页从数据库中获取我的作品
-router.get('/getWorks',function(req,res){
-  mysql.selectWorks(req,res);
-})
-//4、首页从数据库中获取受欢迎文章
-router.get('/getPopularTechnicalFile',function(req,res){
-  mysql.selectPopularTechnicalFile(req,res);
-})
-
-/**************获取技术文档数据******************/
-
-//1、技术文档列表页
-router.get('/getTechnicalFileList',function(req,res){
-  mysql.selectTechnicalFile(req,res);
-})
-//2、技术文档详情页
-router.get('/getTechnicalFileDetail',function(req,res){
-  mysql.selectTechnicalFileDetail(req,res);
-})
-
-/**************获取前端资讯数据******************/
-
-//1、前端资讯列表页
-router.get('/getInfoList',function(req,res){
-  mysql.selectInfo(req,res);
-})
-//2、前端资讯详情页
-router.get('/getInfoDetail',function(req,res){
-  mysql.selectInfoDetail(req,res);
-})
-
-/**************获取我的作品数据******************/
-
-//1、我的作品列表页
-router.get('/getWorksList',function(req,res){
-  mysql.selectWorksList(req,res);
-})
-
-/**************获取生活感悟数据******************/
-
-//1、生活感悟列表页
-router.get('/getLifeList',function(req,res){
-  mysql.selectLife(req,res);
-})
-//2、生活感悟详情页
-router.get('/getLifeDetail',function(req,res){
-  mysql.selectLifeDetail(req,res);
-})
-
-//后台
 /**************获取文章******************/
 //1、获取文章类型
 router.get('/getArticleType',function(req,res){
   mysql.selectArticleType(req,res);
 })
-//1、获取技术文章分类
+//2、获取技术文章分类
 router.get('/getTechnicalClass',function(req,res){
   mysql.selectTechnicalClass(req,res);
 })
-//2、文章列表页
+//3、文章列表页
 router.get('/htgetArticle',function(req,res){
-  mysql.selectHtArticleFile(req,res);
+  mysql.selectHtArticle(req,res);
 })
-//3、修改文章页和文章详情页
+//4、修改文章页和文章详情页
 router.get('/htgetArticle2',function(req,res){
   mysql.selectHtArticle2(req,res);
 })
-
-/**************获取前端资讯******************/
-
-//1、前端资讯列表页
-router.get('/htgetInfo',function(req,res){
-  mysql.selectHtInfo(req,res);
+//5、菜单列表页
+router.get('/htgetMenu',function(req,res){
+  mysql.selectHtMenu(req,res);
 })
-//2、修改前端资讯和前端资讯详情页
-router.get('/htgetInfo2',function(req,res){
-  mysql.selectHtInfo2(req,res);
+//6、修改菜单页和菜单详情页
+router.get('/htgetMenu2',function(req,res){
+  mysql.selectHtMenu2(req,res);
+})
+//7、一级菜单
+router.get('/getFirstLevel',function(req,res){
+  mysql.selectHtFirstMenu(req,res);
 })
 
-/**************获取我的作品******************/
+/**************获取我的作品**************/
 
 //1、我的作品列表页
 router.get('/htgetWorks',function(req,res){
@@ -292,31 +213,19 @@ router.get('/htgetWorks2',function(req,res){
   mysql.selectHtWorks2(req,res);
 })
 
-/**************获取生活感悟******************/
-
-//1、生活感悟列表页
-router.get('/htgetLife',function(req,res){
-  mysql.selectHtLife(req,res);
-})
-//2、修改生活感悟和生活感悟详情页
-router.get('/htgetLife2',function(req,res){
-  mysql.selectHtLife2(req,res);
-})
-
 
 /*************************三、修改数据********************************/
 
-//1、技术文档
-router.post('/modifyTechnicalFile', function(req,res){
+//1、文章
+router.post('/modifyArticle', function(req,res){
   var id='';
+  var articleType='';
   var logUser='';
   var title='';
-  var price='';
   var classCode='';
-  var description = '';
-  var isDeleted=0;
-  var status=0;
-  var detailImgs = '';
+  var summary='';
+  var editorValue = '';
+  var smallImg='';
   var form = new formidable.IncomingForm();   //创建上传表单
   
   form.parse(req, function(err, fields, files) {
@@ -324,6 +233,7 @@ router.post('/modifyTechnicalFile', function(req,res){
         console.log(err);
     } else{
       id=fields.ID;
+      articleType=fields.articleType;
       title=fields.title;
       logUser=fields.logUser;
       classCode=fields.classCode;
@@ -331,29 +241,28 @@ router.post('/modifyTechnicalFile', function(req,res){
       editorValue=fields.editorValue;
       smallImg = fields.smallImg;
     }
-    var adInfo = [id,title,smallImg,editorValue,logUser,summary,status,classCode,isDeleted];
+    var articledata = [id,articleType,title,summary,editorValue,smallImg,classCode,logUser];
     // console.log(adInfo);
 
-    mysql.addModifyTechnicalFile(adInfo,function(err, info) {
+    mysql.modifyArticle(articledata,function(err, info) {
         if(err) {
           console.log(err);
         }else {
-          res.redirect('/admin/technicalFileList');
+          res.redirect('/admin/articleList');
         }
     });             
   });
 });
 
-//2、前端资讯
-router.post('/modifyInfo', function(req,res){
+//2、菜单
+router.post('/modifyMenu', function(req,res){
   var id='';
   var logUser='';
-  var title='';
-  var price='';
-  var description = '';
-  var isDeleted=0;
-  var status=0;
-  var detailImgs = '';
+  var menuParentId='';
+  var menuLevel='';
+  var titleEN='';
+  var titleZH='';
+  var menuIcon='';
   var form = new formidable.IncomingForm();   //创建上传表单
   
   form.parse(req, function(err, fields, files) {
@@ -361,62 +270,25 @@ router.post('/modifyInfo', function(req,res){
         console.log(err);
     } else{
       id=fields.ID;
-      title=fields.title;
       logUser=fields.logUser;
-      summary=fields.summary;
-      editorValue=fields.editorValue;
-      smallImg = fields.smallImg;
+      menuParentId=fields.parentLevel;
+      menuLevel=fields.menuLevel;
+      titleEN=fields.menuTitleEN;
+      titleZH=fields.menuTitleZH;
+      menuIcon = fields.menuIcon;
     }
-    var adInfo = [id,title,smallImg,editorValue,logUser,summary,status,isDeleted];
-    // console.log(adInfo);
-
-    mysql.addModifyInfo(adInfo,function(err, info) {
+    var modifyMenuData = [id,menuParentId,menuLevel,titleEN,titleZH,menuIcon,logUser];
+    mysql.modifyArticle(modifyMenuData,function(err, info) {
         if(err) {
           console.log(err);
         }else {
-          res.redirect('/admin/infoList');
+          res.redirect('/admin/menuList');
         }
     });             
   });
 });
 
-//3、生活感悟
-router.post('/modifyLife', function(req,res){
-  var id='';
-  var logUser='';
-  var title='';
-  var price='';
-  var description = '';
-  var isDeleted=0;
-  var status=0;
-  var detailImgs = '';
-  var form = new formidable.IncomingForm();   //创建上传表单
-  
-  form.parse(req, function(err, fields, files) {
-    if (err) {
-        console.log(err);
-    } else{
-      id=fields.ID;
-      title=fields.title;
-      logUser=fields.logUser;
-      summary=fields.summary;
-      editorValue=fields.editorValue;
-      smallImg = fields.smallImg;
-    }
-    var adInfo = [id,title,smallImg,editorValue,logUser,summary,status,isDeleted];
-    // console.log(adInfo);
-
-    mysql.addModifyLife(adInfo,function(err, info) {
-        if(err) {
-          console.log(err);
-        }else {
-          res.redirect('/admin/lifeList');
-        }
-    });             
-  });
-});
-
-//4、我的作品
+//3、我的作品
 router.post('/modifyWorks', function(req,res){
   var id='';
   var title='';
@@ -434,7 +306,7 @@ router.post('/modifyWorks', function(req,res){
       fileHref='/works/'+fields.fileHref;
       title=fields.worksName;
     }
-    mysql.addModifyWorks([id,swipeImg,title,fileHref,isDeleted],function(err,info){
+    mysql.modifyWorks([id,swipeImg,title,fileHref],function(err,info){
       if(err){
         console.log(err);
       }else{
@@ -447,24 +319,17 @@ router.post('/modifyWorks', function(req,res){
 
 /*************************四、删除数据********************************/
 
-//1、我的作品
+//1、文章
+router.get('/deleteArticle',function(req,res){
+  mysql.deleteArticle(req,res);
+})
+//2、菜单
+router.get('/deleteMenu',function(req,res){
+  mysql.deleteMenu(req,res);
+})
+//3、我的作品
 router.get('/deleteWorks',function(req,res){
-  mysql.deleteSwipe(req,res);
-})
-
-//2、技术文档
-router.get('/deleteTechnicalFile',function(req,res){
-  mysql.deleteTechnicalFile(req,res);
-})
-
-//3、前端资讯
-router.get('/deleteInfo',function(req,res){
-  mysql.deleteInfo(req,res);
-})
-
-//4、生活感悟
-router.get('/deleteLife',function(req,res){
-  mysql.deleteLife(req,res);
+  mysql.deleteWorks(req,res);
 })
 
 

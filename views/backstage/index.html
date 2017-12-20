@@ -7,9 +7,9 @@
     <meta name="renderer" content="webkit">
     <title>博客后台管理中心</title> 
     <link rel="icon" href="images/icon/horse.gif" type="image/gif" size="16*16"> 
-<link rel="stylesheet" href="../stylesheets/backstage/pintuer.css">
-<link rel="stylesheet" href="../stylesheets/backstage/admin.css">
-<link rel="stylesheet" href="../stylesheets/backstage/htMain.css">
+    <link rel="stylesheet" href="../stylesheets/backstage/pintuer.css">
+    <link rel="stylesheet" href="../stylesheets/backstage/admin.css">
+    <link rel="stylesheet" href="../stylesheets/backstage/htMain.css">
     <script src="../../javascripts/backstage/jquery.min.js"></script>   
     <script src="../../javascripts/backstage/main.js"></script>   
 </head>
@@ -24,14 +24,13 @@
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div> 
   <h2><span class="icon-pencil-square-o"></span>博客内容管理</h2>
   <ul class="menuList">
-    <li id="showAdContent"><a class="on" href="/admin/technicalFileList" target="right"><span></span>技术文档</a></li>       
-    <li id="showAdContent"><a href="/admin/infoList" target="right"><span></span>前端资讯</a></li>
-    <li id="showSwipe"><a href="/admin/worksList" target="right"><span></span>我的作品</a></li>           
-    <li id="showAdContent"><a href="/admin/lifeList" target="right"><span></span>生活感悟</a></li>       
+    <li><a class="on" href="/admin/articleList" target="right"><span></span>文章列表</a></li>       
+    <li><a href="/admin/menuList" target="right"><span></span>文章菜单</a></li>       
+    <li><a href="/admin/worksList" target="right"><span></span>我的作品</a></li>      
   </ul>  
 </div>
 <ul class="bread">
-  <li><a href="/admin/technicalFileList" target="right" class="icon-home"> 首页</a></li>
+  <li><a href="/admin/articleList" target="right" class="icon-home"> 首页</a></li>
   <li><a href="##" id="a_leader_txt">技术文档</a></li>
 </ul>
 <div class="admin">
@@ -43,7 +42,7 @@
         <p class="text"></p>
     </div>
 </div>
-<!--删除轮播图按钮提示框-->
+<!--删除按钮提示框-->
 <div class="delTipWraper" hidden>
     <div class="tips">
         <header>

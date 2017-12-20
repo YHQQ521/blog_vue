@@ -6,12 +6,13 @@ $(function(){
     url:'/admin/htgetWorks',
     success:function(response,status,xhr){
       for(var i=0;i<response.length;i++){
-          var swipeItem='<tr id="'+response[i].id+'">'+
+        // console.log(response)
+          var worksItem='<tr>'+
                           '<td>'+(i+1)+'</td>'+  
                           '<td>'+
                             '<img src="../'+response[i].image_path+'" alt="" width="120" height="50" />'+
                           '</td>'+     
-                          '<td class="fsColor pointer" onclick="showDetail(\''+response[i].id+'\')">'+
+                          '<td class="fsColor pointer" onclick="showDetail(\''+response[i].works_id+'\')">'+
                               response[i].title+
                           '</td>'+
                           '<td>'+
@@ -19,18 +20,18 @@ $(function(){
                           '</td>'+
                           '<td class="swipeline">'+
                             '<div class="button-group">'+
-                              '<a class="button border-main" href="#add" onclick="modify(\''+response[i].id+'\')">'+
+                              '<a class="button border-main" href="#add" onclick="modify(\''+response[i].works_id+'\')">'+
                                   '<span class="icon-edit">'+
                                     '</span>'+ '修改' +
                               '</a>'+
-                              '<a class="button border-red" href="javascript:void(0)" onclick="del(\''+response[i].id+'\',this)">'+
+                              '<a class="button border-red" href="javascript:void(0)" onclick="del(\''+response[i].works_id+'\',this)">'+
                                 '<span class="icon-trash-o"></span>'+ 
                                 '删除'
                                '</a>'+
                             '</div>'+
                           '+</td>'+
                         '</tr>' 
-        $('#swipeTable').append(swipeItem);
+        $('#worksTable').append(worksItem);
       }
     }
   })
@@ -45,7 +46,7 @@ $(function(){
         data2.parentNode.parentNode.parentNode.remove();
         $.ajax({
           type:'GET',
-          url:'/admin/deleteSwipe',
+          url:'/admin/deleteWorks',
           data:{id:data1},
           dataType:'json',
           success:function(response,status,xhr){

@@ -16,9 +16,15 @@
 <body>
 <form method="post" action="" id="listform">
   <div class="panel admin-panel">
-    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong> <a class="addField" href="">添加字段</a></div>
-    <div class="padding border-bottom">  
-    <button type="button" class="button border-yellow" onclick="window.location.href='/admin/addArticle'"><span class="icon-plus-square-o"></span> 添加内容</button>
+    <div class="panel-head tabWrap">
+      <div class="listTab">
+        <ul id="tabChange">
+          <li class="tabActive">技术文档</li>
+          <li>前端资讯</li>
+          <li>生活感悟</li>
+        </ul>
+      </div>
+      <button type="button" class="button border-yellow" onclick="window.location.href='/admin/addArticle'"><span class="icon-plus-square-o"></span> 添加内容</button>
     </div>
     <table id="htArticleList" class="table table-hover text-center">
       <tr>

@@ -11,7 +11,7 @@ $(function(){
 		url:'/admin/htgetWorks2',
 		success:function(res,status,xhr){
 			// console.log(res);
-			$('#IDName').val(res[0].id);
+			$('#IDName').val(worksId);
 			$('#worksTitle').val(res[0].title);
 			$('#worksHref').val(res[0].href.slice(7));
 	      //获取缩略图

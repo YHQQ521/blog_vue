@@ -148,3 +148,35 @@ textarea[name=content]{width:100%; height:500px; border:1px solid #ddd; border-r
 #delClose{
     cursor: pointer;
 }
+.tabWrap{
+    height: 45px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 0;
+}
+.listTab{
+    overflow: hidden;
+}
+.listTab ul{
+    padding-left: 0;
+}
+.listTab ul li{
+    height: 45px;
+    line-height: 45px;
+    padding: 0 15px;
+    float: left; 
+    background-color:#ccc;
+    color: #fff;
+    border-right: 1px solid #aaa;
+}
+.listTab ul li:nth-last-of-type(1){
+    border:none;
+}
+.listTab ul li.tabActive{
+    background-color:#22CC77;
+}
+.listTab ul li:hover{
+    cursor: pointer;
+    opacity: .8;
+}

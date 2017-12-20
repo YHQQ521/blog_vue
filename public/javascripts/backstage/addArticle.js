@@ -10,33 +10,43 @@ $(function(){
       url:'/admin/getArticleType',
       success:function(response,status,xhr){
             for(var i=0;i<response.length;i++){
-                var articleTypeItem='<label class="classItem" for="class'+i+'">'+
-                				'<input id="class'+i+'" type="radio" value="'+response[i].article_type+'" onclick="getArticleTypeValue(this)" name="articleType">'+
-                					response[i].article_type_title+
+                var articleTypeItem='<label class="classItem" for="arType'+i+'">'+
+                				'<input id="arType'+i+'" type="radio" value="'+response[i].menu_type+'" onclick="getArticleTypeValue(this)" name="articleType">'+
+                					response[i].menu_type_title+
                 				'</label>' 
                 $('#getArticleType').append(articleTypeItem);
               }                       
           }
     })
-  	//获取技术文章分类
-    $.ajax({
-      type:'GET',
-      dataType:'json',
-      url:'/admin/getTechnicalClass',
-      success:function(response,status,xhr){
-            for(var i=0;i<response.length;i++){
-                var classItem='<label class="classItem" for="class'+i+'">'+
-                				'<input id="class'+i+'" type="radio" name="articleClass" value="'+response[i].class_code+'" onclick="getValue(this)">'+
-                					response[i].class_name+
-                				'</label>' 
-                $('#getClass').append(classItem);
-              }                       
-          }
-    })
+	//获取技术文章分类
+  $.ajax({
+    type:'GET',
+    dataType:'json',
+    url:'/admin/getTechnicalClass',
+    success:function(response,status,xhr){
+    	console.log(response)
+          for(var i=0;i<response.length;i++){
+              var classItem='<label class="classItem" for="class'+i+'">'+
+              				'<input id="class'+i+'" type="radio" name="articleClass" value="'+response[i].menu_type+'" onclick="getValue(this)">'+
+              					response[i].menu_type_title+
+              				'</label>' 
+              $('#getClass').append(classItem);
+            }                       
+        }
+  })
 })
 	//文章类型值赋给隐藏域
 	function getArticleTypeValue(data){
-		$('#articleTypeHidden').val(data.value)
+		$('#articleTypeHidden').val(data.value);
+		if(data.value!=='technical'){
+			$('.hideTechClass').css('display','none')
+			//清空技术文章分类隐藏域的值
+			$('#selectedNameHidden').val('')
+			//清楚选中技术文章分类
+			$('#getClass .classItem input').attr('checked',false)
+		}else{
+			$('.hideTechClass').css('display','block')
+		}
 	}
 	//分类值赋给隐藏域
 	function getValue(data){
